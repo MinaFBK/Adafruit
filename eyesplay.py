@@ -6,6 +6,7 @@ from adafruit_display_shapes.circle import Circle
 
 # Create display group
 display = board.DISPLAY
+group = displayio.Group()
 
 # Create default eye shapes
 eye_width = 80
@@ -40,36 +41,31 @@ def transition_to_sad():
     sad_group = displayio.Group()  # Group for the sad circles
     
     # Create the initial small sad circles
-    initial_sad_radius = 2000
+    initial_sad_radius = 5
     sad_circles = [
-        Circle(eye_x_left, eye_y, initial_sad_radius, fill=0x000000),
-        Circle(eye_x_right + 80, eye_y, initial_sad_radius, fill=0x000000)
+        Circle(eye_x_left, eye_y + eye_height, initial_sad_radius, fill=0x000000),
+        Circle(eye_x_right + 80, eye_y + eye_height, initial_sad_radius, fill=0x000000)
     ]
     
-    # Add the initial sad circles
-    #  to the sad circles group
+    # Add the initial sad circles to the sad group
     for circle in sad_circles:
         sad_group.append(circle)
 
-    # Add the sad circles group to the display
-    display.show(sad_group)
-
     # Transition from normal to sad
-    for radius in range(eye_width):
+    for radius in range(initial_sad_radius, 20 + 1):
         # Update the radius of the sad circles
         for circle in sad_circles:
             circle.radius = radius
-            display.show(sad_group)
-
-        time.sleep(1)
+        display.refresh()
+        time.sleep(0.5)
 
     # Wait for a moment before resetting
     time.sleep(1)
 
-    # Clear the sad circles group to remove sad circles
-    for circle in sad_circles:
-        sad_group.remove(circle)
-    display.show(splash)  # Display the normal eyes again
+    # Clear the sad group to remove sad circles
+    sad_group.pop()  # Remove the last circle (right eye)
+    sad_group.pop()  # Remove the second last circle (left eye)
+    display.refresh()
     time.sleep(0.1)
 
 # Call the transition function
