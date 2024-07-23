@@ -7,16 +7,19 @@
 	"settings": {
 		"python.languageServer": "Pylance",
 		"python.analysis.diagnosticSeverityOverrides": {
+			"reportShadowedImports": "none",
 			"reportMissingModuleSource": "none"
 		},
 		"python.analysis.extraPaths": [
 			"c:\\Users\\mina.bekhit\\.vscode\\extensions\\joedevivo.vscode-circuitpython-0.1.20-win32-x64\\boards\\0x239A\\0x8072",
 			"c:\\Users\\mina.bekhit\\.vscode\\extensions\\joedevivo.vscode-circuitpython-0.1.20-win32-x64\\stubs",
-			"c:\\Users\\mina.bekhit\\AppData\\Roaming\\Code\\User\\globalStorage\\joedevivo.vscode-circuitpython\\bundle\\20230919\\adafruit-circuitpython-bundle-py-20230919\\lib"
+			"c:\\Users\\mina.bekhit\\AppData\\Roaming\\Code\\User\\globalStorage\\joedevivo.vscode-circuitpython\\bundle\\20240720\\adafruit-circuitpython-bundle-py-20240720\\lib",
+			"c:\\Users\\mina.bekhit\\AppData\\Roaming\\Code\\User\\globalStorage\\joedevivo.vscode-circuitpython\\bundle\\20231220\\adafruit-circuitpython-bundle-py-20231220\\lib"
 		],
-		"circuitpython.board.version": "8.2.3",
+		"circuitpython.board.version": "9.1.0",
 		"circuitpython.board.vid": "0x239A",
 		"circuitpython.board.pid": "0x8072",
 		"python.linting.pylintEnabled": false,
+		"circuitpython.serialPort": "COM3"
 	}
 }
